@@ -1,0 +1,1 @@
+curl -i -X GET http://localhost:8080/TekathonSmsReceiver/sms-sink.jsp?teamId=101&donorName=FirstLast&donorMobile=9876543210&requestType=Platelets&requiredByWhen=2015-01-09%2012:01:01.123&pincodeForDonation=400606&donationRequestId=10483838

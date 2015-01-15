@@ -1,0 +1,27 @@
+grails create-app TekathonSmsReceiver
+
+cd TekathonSmsReceiver
+
+grails create-domain-class com.mastek.rnd.tekathon.grails.smsreceiver.SmsRequest
+
+
+Long teamId
+String donorName
+String donorMobile
+String requestType
+Date requiredByWhen
+String pincodeForDonation
+String donationRequestId
+
+    static constraints = {
+    teamId blank: false
+    donorName blank: false
+    donorMobile blank: false
+    requestType blank: false
+    requiredByWhen blank: false
+    pincodeForDonation blank: false
+    donationRequestId blank: false
+    }
+
+
+
