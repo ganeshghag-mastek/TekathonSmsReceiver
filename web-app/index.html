@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Rest Demo1</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="date.js"></script>
+<script type="text/javascript" src="myglobals.js"></script>
+
+<script type="text/javascript">
+	$.ajaxSetup({
+		cache : false
+	});
+	
+
+	$(document).ready(function() {
+		$.getJSON(webcontext+"/smsRequests.json?max=9999", function(mydata) {
+			  var disp = mydata;
+			  var alldata;
+			  alldata = '';
+			  for(var i=0;i<disp.length;i++) 
+				  alldata = alldata + disp[i].entryDateTime 
+				  + ', ' + disp[i].teamId 
+				  + ', ' + disp[i].donorName
+				  + ', ' + disp[i].donorMobile
+				  + ', ' + disp[i].requestType
+				  + ', ' + disp[i].requiredByWhen
+				  + ', ' + disp[i].pincodeForDonation
+				  + ', ' + disp[i].donationRequestId
+				  + '<br>';
+			  
+			  
+			  $("#status").html(alldata);
+			  
+			  
+		  });
+		
+	});
+	
+</script>
+</head>
+<body>
+	<span id="status" name="status" >
+	</span>
+</body>
+</html>

@@ -1,4 +1,5 @@
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.*" %>
 <%
 String teamId = "";
 String donorName = "";
@@ -7,10 +8,17 @@ String requestType = "";
 String requiredByWhen = "";
 String pincodeForDonation = "";
 String donationRequestId = "";
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a");
+sdf.setTimeZone(TimeZone.getTimeZone("IST"));
+
+String entryDateTime = sdf.format(new Date());
+
+
 
 String usage = "Usage: <hr>/sms-sink.jsp?teamId=101&donorName=First Last&donorMobile=9876543210&requestType=Platelets&requiredByWhen=2015-01-09 12:01:01&pincodeForDonation=400606&donationRequestId=10483838";
 
 out.println(usage);
+out.println(entryDateTime);
 
  teamId = request.getParameter("teamId");
  donorName = request.getParameter("donorName");
@@ -44,7 +52,8 @@ $(document).ready(function(){
 
 function insertSmsRequest(){
     var req = {
-		"teamId":$('#teamId').val(),
+"entryDateTime":$('#entryDateTime').val(),
+"teamId":$('#teamId').val(),
 "donorName":$('#donorName').val(),
 "donorMobile":$('#donorMobile').val(),
 "requestType":$('#requestType').val(),
@@ -83,6 +92,7 @@ function test_ajax(httpMethod, url, indata){
 
 </script>
 
+<input type="hidden" id="entryDateTime" name="entryDateTime" value="<%=entryDateTime%>"/>
 <input type="hidden" id="teamId" name="teamId" value="<%=teamId%>"/>
 <input type="hidden" id="donorName" name="donorName" value="<%=donorName%>"/>
 <input type="hidden" id="donorMobile" name="donorMobile" value="<%=donorMobile%>"/>
